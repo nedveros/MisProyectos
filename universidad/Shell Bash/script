@@ -1,0 +1,29 @@
+#!/bin/bash
+#author:david baudet moreno
+
+if [ ${#} -eq 1 ]
+then
+
+
+	cat /proc/meminfo > /tmp/temporal
+
+	while read item
+	do
+
+	campo=$(echo ${item} | cut -d" " -f1)
+	if [ ${1} = ${campo} ]
+	then 
+		tamKB=$( echo ${item} | cut -d" "  -f2 )
+		tamMB=$(( ${tamKB}/1024 ))
+	fi
+	echo "el tamaño ocupado por ${campo} es ${tamMB} MB"
+	rm /temp/temporal	
+	exit 0 
+	done < /tmp/temporal
+	echo no existe informacion sobre el item ${1}
+else
+	echo "debes dar un argumento"
+
+fi
+
+rm /tmp/temporal

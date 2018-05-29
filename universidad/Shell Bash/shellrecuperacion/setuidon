@@ -1,0 +1,39 @@
+#!/bin/bash
+#author:david baudet moreno
+i=1
+contador=0
+if [ ! ${#} -eq 0 ] 
+then
+	while [ ${i} -le ${#} ]
+	do
+		directorio=`echo ${*} |cut -d" " -f${i}`
+	if [ ~/${directorio} -d ] 
+	then
+		permisos=`ls -l ~/${directorio} |cut -d" " -f1`
+		buid=`echo ${permisos:3:1}`
+		echo ${buid}
+		if [ ${buid} = "s" ]
+		then
+		contador=$(( ${contador} + 1 ))
+		i=$(( ${i} + 1 ))
+		fi
+	else
+		echo "no me has metido un directorio"
+	fi
+	done
+
+else
+	ls -l /bin | cut -d" " -f1 > /tmp/temporal
+	while read linea
+	do
+	
+	buid=`echo ${linea:3:1}`
+		if [ ${buid} = "s" ]
+		then
+		contador=$(( ${contador} + 1 ))
+		fi
+	done < /tmp/temporal
+	rm /tmp/temporal
+fi
+
+echo ${contador}

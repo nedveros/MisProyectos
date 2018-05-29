@@ -1,0 +1,10 @@
+#!/bin/bash
+#author:david baudet moreno
+
+
+if  [ ${1} -eq ${2} ] && [ ${1} -eq ${3} ] && [ ${3} -eq ${2} ] 
+then  
+	echo "Son iguales "
+else
+	echo "No son iguales"
+fi

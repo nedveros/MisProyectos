@@ -1,0 +1,16 @@
+#!/bin/bash
+#author:david baudet moreno
+ls ~/${1} > /tmp/temporal
+numero=0
+while read linea
+do
+	if [ -d ~/${1}/${linea} ]
+	then
+		
+		numero=`ls ~/${1}/${linea} | wc -l`
+		echo ${linea} "("${numero} "elementos)"
+		numero=0
+	fi
+
+done < /tmp/temporal
+rm /tmp/temporal

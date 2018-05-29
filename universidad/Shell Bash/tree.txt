@@ -1,0 +1,12 @@
+.
+├── 0464744001431206183_filepicker.jpg
+├── Documento sin título
+├── Documento sin título~
+├── fichero
+├── hola2
+├── mayus
+├── mayus.c
+├── real madrid.jpeg
+└── tree.txt
+
+0 directories, 9 files

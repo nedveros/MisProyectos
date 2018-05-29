@@ -1,0 +1,22 @@
+#!/bin/bash
+#author:david baudet moreno
+
+
+if [ ${#} -ne 1 ]
+then 
+	echo "Error.Se debe pasar un argumento"
+
+fi
+
+if [ ! -e ${HOME}/bin/${1} ]
+then 	
+	echo "No existe tal archivo"
+
+else	
+	echo "si existe el archivo"
+
+	if [ ! -x ${HOME}/bin/${1} ]
+	then
+		echo ${1} no es un ejecutable
+	fi
+fi

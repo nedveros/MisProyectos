@@ -1,0 +1,25 @@
+#!/bin/bash
+#author:david baudet moreno
+#comprime un directorio 
+#${1} un nombre de un archivo que va a ser el comprimido
+#${2} directorio donde se van a coger los archivos que se van a comprimir
+
+
+ls ~/${2} > /tmp/temporal
+contador=0
+comprimidos=0
+while read linea
+do 
+	if [ ! -d linea ]
+	then
+		tar czf ~/${1}."tar".gz ${linea}
+		${comprimidos}=$(( ${comprimidos} + 1 ))
+	else
+		${contador}=$(( ${contador} + 1 ))
+	fi	
+	
+
+done < /tmp/temporal
+rm /tmp/temporal
+echo directorios ${contador}
+echo comprimidos ${comprimidos}

@@ -1,0 +1,11 @@
+#!/bin/bash
+#author:david baudet moreno
+
+echo ${*} > /tmp/temporal
+
+while read linea
+do
+	ls ${linea} 
+
+done < /tmp/temporal
+rm /tmp/temporal

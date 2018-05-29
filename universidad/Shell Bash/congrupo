@@ -1,0 +1,17 @@
+#!/bin/bash
+#author:david baudet moreno
+
+cat /etc/group > /home/david/archivogrupo
+contador=0
+
+while read linea
+do
+	asignados=`echo ${linea} | cut -d ":" -f4 `
+	if [ ! ${asignados} = "" ]
+	then
+		contador=$(( ${contador} + 1 ))
+	fi
+
+done < /home/david/archivogrupo
+
+echo "el numero de grupos con usuarios asignados " ${contador}

@@ -1,0 +1,12 @@
+#!/bin/bash
+#author:david baudet moreno
+
+if [[ ${1} < ${2} ]] #solo par el caso de el ue utilizes > y <
+then
+	echo la cadena es menor
+else
+	echo la cadena es mayor o igual
+
+fi
+
+

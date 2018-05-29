@@ -1,0 +1,49 @@
+#!/bin/bash
+#Author: david baudet moreno
+
+if [ ! ${#} -lt 2 ]
+then
+	echo "Se han pasado ${#} parametros"
+	i=1
+	while [ ${i} -le $(( ${#}-1 )) ]
+	do
+		if [ -d ${!i} ]
+		then
+			mayus=0
+			minus=0	
+			#echo ${!i} " es un directorio"
+			ls ${!i} > /tmp/temporal
+			while read linea
+			do
+				if [ ! -d ${!i}/${linea} ] && [ -e ${!i}/${linea} ]
+				then
+					#echo ${!i}/${linea} " es un fichero ordinario"
+					t=`stat -c %s ${!i}/${linea}`
+					#echo "El fichero ordinario "${!i}/${linea}" pesa "${t}" bytes"
+					if [ ${t} -ge ${!#} ]
+					then
+						echo "${t} >= ${!#} mayuscula"
+						mayus=$(( mayus + 1 ))
+						mv ${!i}/${linea} ${!i}/${linea^^} > /dev/null 2>&1
+					else
+						echo "${t} < ${!#} minuscula"
+						minus=$(( minus + 1 ))
+						mv ${!i}/${linea} ${!i}/${linea,,} > /dev/null 2>&1
+					fi
+				else
+					echo ${!i}/${linea} " no es un fichero ordinario"
+				fi
+			
+			done < /tmp/temporal
+			rm /tmp/temporal
+		else
+			echo ${!i} " no es un directorio"
+		fi
+		echo "Para el fihero ${!i} se han renombrado ${mayus} ficheros a mayuscula y ${minus} ficheros a minuscula"
+		i=$(( ${i} + 1 ))
+	done
+
+
+else
+	echo "Se deben pasar almenos 2 parametros"
+fi

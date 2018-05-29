@@ -1,0 +1,21 @@
+#!/bin/bash
+#author:david baudet moreno
+
+i=0
+cat /etc/group > /home/david/listadog
+argumentos=${*}
+validos=0
+until [ ${i} -eq ${#} ]
+do
+	while read linea
+	do
+	numero=`echo ${argumentos} | cut -d " " -f${i}`
+	gid=`echo ${linea} | cut -d ":" -f3`
+		if [ ${numero} -eq ${gid} ]
+		then
+			validos=$(( ${validos} + 1 ))
+		fi		
+	done < /home/david/listadog
+	echo "para el gid" ${numero} "hay tantos " ${validos}
+	i=$(( ${i} + 1 ))
+done

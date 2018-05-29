@@ -1,0 +1,26 @@
+#!/bin/bash
+#author:david baudet moreno
+#comprime un directorio 
+#${1} un nombre de un archivo que va a ser el comprimido
+#${2} directorio donde se van a coger los archivos que se van a comprimir
+
+nombre=`echo ${1%%.*} `
+
+if [ ! ${#} -eq 2 ]
+then
+	echo "se necesitan dos argumentos"
+	exit 1
+else
+	ls ${2} > /tmp/temporal
+	lista=""
+	while read linea
+	do
+		if [ ! -d ${2}/${linea} ]
+		then
+			lista=${lista}" "${2}/${linea}
+		fi
+	done < /tmp/temporal
+	tar -czf ${nombre} ."tar".gz ${lista}
+	
+fi
+rm /tmp/temporal

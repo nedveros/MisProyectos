@@ -1,0 +1,30 @@
+#!/bin/bash
+#author:david baudet moreno
+contador=0
+while [ ! ${contador} -lt $(( ${#} - 1 )) ]
+do
+	valor=`echo ${*} |cut -d" " -f${#} `
+	archivo=`echo ${*} |cut -d" " -f${contador} `
+	ls ~/${archivo} > /tmp/temporal
+	while read linea
+	do
+		if [ ! -d ~/${linea} ] && [ ! -x ~/${linea} ]
+		then
+			sd=`du ~/${archivo}/${linea}`
+			tamano=`echo ${sd} |cut -d" " -f1`
+			if [ ${tamano} -ge ${valor} ]
+			then
+			mv ~/${archivo}/${linea} ~/${archivo}/${linea^^}
+			else
+			mv ~/${archivo}/${linea} ~/${archivo}/${linea,,}
+
+		fi
+		
+	done < /tmp/temporal
+	rm /tmp/temporal
+
+
+
+
+contador=$(( ${contador} + 1 ))
+done

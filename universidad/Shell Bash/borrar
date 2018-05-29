@@ -1,0 +1,18 @@
+#!/bin/bash
+#author:david baudet moreno
+
+
+ls /home/david > /home/david/archivos
+contador=0
+while read linea
+do
+
+	if [ ${1} = ${linea} ]
+	then
+		rm /home/david/${linea}
+	contador=$(( ${contador} + 1 ))
+
+	fi
+
+done < /home/david/archivos
+echo "borrados " ${contador}

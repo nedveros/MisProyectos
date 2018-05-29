@@ -1,0 +1,9 @@
+#!/bin/bash
+#author:david baudet moreno
+distancia_a_sol=$(( 747564765873465 + 8734887847 ))
+
+archivos=`ls Escritorio`
+
+echo ${archivos}
+
+

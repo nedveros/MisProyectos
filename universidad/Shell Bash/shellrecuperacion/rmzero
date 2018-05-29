@@ -1,0 +1,36 @@
+#!/bin/bash
+#author:david baudet moreno
+
+
+if [ ${#} -le 2 ] && [ ${1:0:1} = "." ]
+then
+	if [ ! -z  ${2} ]
+	then
+		ls ~/${2} > /tmp/temporal
+		while read linea
+		do
+		t=`du ~/${2}/${linea}`
+		tamano=`echo ${t} | cut -d" " -f1`
+		extension=`echo ${1##*.}`
+
+			if [ tamano = 0 ] && [ ${1} = ${extension} ]
+			then
+			rm ~/${2}/${linea}
+			fi
+		done < /tmp/temporal
+	else
+		ls > /tmp/temporal
+		while read linea
+		do
+		t=`du ~/${linea}`
+		tamano=`echo ${t} | cut -d" " -f1`
+		extension=`echo ${1##*.}`
+			if [ tamano = 0 ] && [ ${1} = ${extens$
+                        then
+                        rm ~/${linea}
+                        fi
+		done < /tmp/temporal
+else
+	echo "introduce los argumentos bien"
+fi
+rm /tmp/temporal

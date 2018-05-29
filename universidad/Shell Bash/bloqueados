@@ -1,0 +1,14 @@
+#!/bin/bash
+#author:david baudet moreno
+
+cat /etc/shadow > /home/david/listado
+
+while read linea
+do
+	lista=`echo ${linea} | cut -d ":" -f2`
+	if [ ${lista} = "!" ]
+	then
+		echo ${linea} | cut -d ":" -f1
+	fi
+
+done < /home/david/listado

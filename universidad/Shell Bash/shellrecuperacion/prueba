@@ -1,0 +1,11 @@
+#!/bin/bash
+#author:david baudet moreno
+
+if [ ! -z  ${1} ]
+then
+echo no esta vacio
+else
+echo esta vacio
+fi
+
+

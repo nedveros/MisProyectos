@@ -1,0 +1,7 @@
+#!/bin/bash
+#author:david baudet moreno
+
+
+echo ${#}
+echo ${*}
+

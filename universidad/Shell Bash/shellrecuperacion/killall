@@ -1,0 +1,24 @@
+#!/bin/bash
+#author:david baudet moreno
+
+if [ ${#} -ne 1 ]
+then
+	echo "solo se introduce un argumento"
+else
+	ps > /tmp/temporal
+	while read linea
+	do
+		pid=`echo ${linea} | cut -d" " -f1`
+		if [ ${pid} != "PID" ]
+		then
+			nombre=`echo ${linea} | cut -d" " -f4`
+			if [ ${nombre} = ${1} ]
+			then
+				kill ${pid}
+			fi
+		
+		fi
+	
+	done < /tmp/temporal
+fi
+rm /tmp/temporal

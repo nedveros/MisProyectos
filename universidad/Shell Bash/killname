@@ -1,0 +1,18 @@
+#!/bin/bash
+#author:david baudet moreno
+
+if [ ${#} -ne 1 ]
+then
+	echo "debes de meter"
+else
+	ps > /tmp/temporal
+	while read linea
+	do
+	pid=$(echo ${linea} | cut -d" " -f1)
+	if [ ${pid} != "PID"]
+	then
+	
+	
+	done < /tmp/temporal
+fi
+

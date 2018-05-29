@@ -1,0 +1,15 @@
+#author david baudet moreno
+el if entre corchetes tiene que haber un espacio,
+
+
+if [ -d $1 ] #compara y mira si es un directorio ojo con los espacios
+then #el then tiene que estar debajo del if
+	echo ${1} es un directorio
+else
+	echo ${2} no es un directorio
+
+fi  #caracter final de if
+
+
+
+# &> /dev/null asi no ejecuta el comando que haces haciendo ${1} 

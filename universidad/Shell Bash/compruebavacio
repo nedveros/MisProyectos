@@ -1,0 +1,11 @@
+#!/bin/bash
+#author:david Baudet Moreno
+
+
+if [ -z ${1} ]
+then 
+	echo la cadena esta vacia
+else 	
+	echo la cadena no esta vacia
+
+fi

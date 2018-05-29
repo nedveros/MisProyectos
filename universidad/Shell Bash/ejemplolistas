@@ -1,0 +1,10 @@
+!/bin/bash
+#author:david baudet moreno
+
+
+
+frutas="mandarina uvas naranjas pera"
+echo ${frutas}
+frutas=${frutas}" manzana"
+echo ${frutas}
+

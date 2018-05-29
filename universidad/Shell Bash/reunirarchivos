@@ -1,0 +1,27 @@
+#!/bin/bash
+#author:david baudet moreno
+
+if [ ${#} -ge 2 ]
+narchivos=0
+then
+echo ${#} > lista
+
+for f in ${lista} 
+do
+	ls ${f} > /home/david/Escritorio/elementos
+        while read linea
+	do
+	directoriod=`echo elementos | cut -d " " -f1 `
+	if [ ! ${f} -x ]
+	then
+	cp ${f} ${directoriod}
+	narchivos=$(( narchivos + 1 ))
+	fi
+	done < /home/david/Escritorio/elementos
+done
+
+else
+	echo "no has introducido como minimo 2 valores"
+fi
+
+	echo "el numero de archivos copiados es:" ${narchivos}
