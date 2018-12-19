@@ -1,0 +1,3 @@
+1) Asociar los alumnos que se matriculan en la UJA, para que la nota media sea lo mas parecida (iden. Reparto balanza).
+2) N alumnos N asignaturas y reuniones en una matriz de bool, q si coindicen en alguna asignatura vale 0 y sino 1, sacar el nº minimo de reuniones para maximizar el nº de alumnos.(iden. Alumnos)
+3) N huertas a regar y maximizar que huertas regar con un nº maximo de horas de riego.(iden. monedas)
